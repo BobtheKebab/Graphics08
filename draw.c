@@ -52,17 +52,18 @@ void draw_polygons( struct matrix *polygons, screen s, color c ) {
   int point;
   double *normal;
 
-  for (point=0; point < polygons->lastcol-2; point+=3) {
+  for (point=0; point < polygons->lastcol - 2; point+=3) {
 
     normal = calculate_normal(polygons, point);
 
     if ( normal[2] > 0 ) {
 
-      draw_line( polygons->m[0][point],
-                 polygons->m[1][point],
-                 polygons->m[0][point+1],
-                 polygons->m[1][point+1],
+      draw_line( polygons->m[point][0],
+                 polygons->m[point][1],
+                 polygons->m[point + 1][0],
+                 polygons->m[point + 1][1],
                  s, c);
+/*
       draw_line( polygons->m[0][point+2],
                  polygons->m[1][point+2],
                  polygons->m[0][point+1],
@@ -73,6 +74,7 @@ void draw_polygons( struct matrix *polygons, screen s, color c ) {
                  polygons->m[0][point+2],
                  polygons->m[1][point+2],
                  s, c);
+*/
     }
   }
 }
